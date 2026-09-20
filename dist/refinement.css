@@ -1,0 +1,378 @@
+@font-face{font-family:Barlow;src:url('assets/barlow-bold.ttf');font-weight:700;font-display:swap}
+@font-face{font-family:DM;src:url('assets/dm-sans.ttf');font-weight:400;font-display:swap}
+@font-face{font-family:Kalam;src:url('assets/kalam.ttf');font-weight:700;font-display:swap}
+body{font-family:DM,sans-serif;background:#090e0b;--cream:#f0e1c7;--muted:#b5aa91}
+.pub{background:radial-gradient(ellipse at 100% 5%,#24312345,transparent 55%),#101710;max-width:680px}
+.topbar{background:#0e2119;height:94px;padding-inline:14px}
+.brand{display:flex;align-items:center;justify-content:center;gap:0;min-width:0}
+.wicklow-mark{position:relative;display:block;width:222px;height:70px;overflow:hidden;flex:0 1 auto}
+.wicklow-mark img{display:block;width:100%;height:100%;object-fit:cover;object-position:center bottom;filter:invert(1) sepia(.55) saturate(1.05);mix-blend-mode:screen}
+.brand-divider,.wos-brand{display:none}
+.wos-logo{display:block;position:relative;width:35px;height:35px;border-radius:50%;overflow:hidden}
+.wos-logo img{position:absolute;width:192%;max-width:none;left:-46%;top:-12%;filter:invert(1) sepia(.35)}
+.brand-star{font-size:20px}.icon-button{width:36px}
+.welcome-copy h1{font-family:Kalam,cursive;font-style:normal;font-size:clamp(64px,15vw,103px);line-height:1.03;letter-spacing:-.075em;text-transform:none}
+.welcome-copy{margin-top:-25%;padding-top:52px}
+.enter{font-family:Barlow,sans-serif;font-size:29px;letter-spacing:.02em}
+.menu-main{padding:29px 18px 0}
+.menu-heading{padding:0 5px 30px}.menu-heading .overline{font-size:10px;letter-spacing:.2em;color:#a8b48b}
+.menu-heading h1{font-family:Kalam,cursive;font-size:clamp(33px,8.8vw,54px);text-transform:none;font-style:normal;letter-spacing:-.055em;line-height:1.15;transform:rotate(-3deg)}
+.menu-heading h1:after{width:61%;height:7px;clip-path:polygon(0 45%,100% 0,94% 75%,3% 100%);background:#6a8554;margin-top:7px}
+.category-grid{gap:19px 13px}
+.category-card{position:relative;border:0;border-radius:0;background:#0a130e;box-shadow:0 9px 18px #0002;animation:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.photo-window{position:relative;overflow:hidden;background:#263224}
+.category-photo{aspect-ratio:1.24;filter:saturate(.87);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
+.photo-window:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#0002,transparent 45%,#0a130e)}
+.category-number{position:absolute;z-index:1;top:9px;left:11px;font:700 14px Barlow,sans-serif;color:#f3e0bcbd;letter-spacing:.09em}
+.category-label{position:relative;border:0;margin-top:-8px;z-index:2;padding:0 11px 13px;min-height:112px;align-items:flex-start;gap:4px}
+.category-label h2{font:700 clamp(24px,5.7vw,34px)/.99 Barlow,sans-serif;letter-spacing:-.02em;margin:0 0 9px;max-width:200px}
+.category-label p{font:400 11px/1.55 DM,sans-serif;color:#b2ab94}
+.category-label>span{font:24px DM,sans-serif;color:#c2ad7b;transition:transform .3s;margin-top:1px}
+.category-bottom{display:flex;justify-content:space-between;align-items:center;margin:0 11px;padding:9px 0 11px;border-top:1px solid #8a85612e;font-size:10px;color:#b2b990}
+.category-bottom>span{font-size:7px;letter-spacing:.09em;color:#8f947c}
+.category-card:hover{transform:translateY(-5px) rotate(-.4deg);box-shadow:0 15px 28px #0006}
+.category-card:nth-child(even):hover{transform:translateY(-5px) rotate(.4deg)}
+.category-card:hover .category-photo{transform:scale(1.07);filter:saturate(1.06) brightness(1.08)}
+.category-card:hover .category-label>span{transform:translate(3px,-3px)}
+.category-card:active{transform:scale(.975)}
+.reveal{opacity:0;transform:translateY(22px)}.reveal.arrived{opacity:1;transform:none;transition:opacity .6s var(--delay,0ms),transform .6s var(--delay,0ms),box-shadow .3s}
+.bonifacio{margin-top:28px;padding:20px 8px;border-color:#a38b544f}.bonifacio b{font-family:Barlow,sans-serif;font-size:29px}.pub-quote{font-family:Kalam,cursive;text-transform:none;font-size:25px;color:#d4c5a4}.photo-note{font-size:10px}
+.section-photo{height:230px}.section-photo:after{background:linear-gradient(transparent 15%,#101710)}
+.section-photo+.section-heading{position:relative;margin-top:-60px;padding-top:0}
+.section-heading{padding-inline:23px}.section-heading h1{font:700 clamp(43px,11vw,65px)/.98 Barlow,sans-serif;letter-spacing:-.02em;margin:18px 0 14px;max-width:90%}
+.section-heading p{font-size:14px;max-width:36ch;color:#c4b79e}.backlink{font-size:12px;color:#bfcca3}
+.controls{padding:14px 22px 21px}.searchbox{background:#08120d;border-color:#71765366;border-radius:0;padding-block:7px}.searchbox input{font-size:14px}
+.filter-chips{display:flex;gap:8px;overflow-x:auto;padding:13px 0 3px;scrollbar-width:thin}
+.filter-chips button{border:1px solid #6b745041;border-radius:2px;white-space:nowrap;padding:10px 15px;min-height:44px;color:#c9bea8;background:#152219;font:700 17px Barlow,sans-serif;transition:background .2s,transform .2s}
+.filter-chips button[aria-pressed=true]{color:#17271c;background:#dac8a4;border-color:#dac8a4}.filter-chips button:active{transform:scale(.95)}
+.products{padding:0 22px}.product{position:relative;margin-bottom:13px;padding:22px 17px;background:linear-gradient(120deg,#2731236b,#17221955);border:1px solid #7c80522b;border-left:3px solid #627944;gap:15px;transition:background .3s,border-color .3s}
+.product:hover{background:#2532238c;border-left-color:#b4bb7c}.dish-type{display:block;font:700 10px DM,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#a6b484;margin-bottom:9px}
+.product h3{font:700 27px/1.03 Barlow,sans-serif;margin-bottom:10px;letter-spacing:.005em}.product p{font-size:13px;line-height:1.65;color:#bab19d}
+.product-action{gap:15px;max-width:165px}.price{font:700 25px/1.1 Barlow,sans-serif;color:#e7d1a6;padding-top:1px}
+.add{font:700 17px Barlow,sans-serif;border-color:#71865280;border-radius:2px;background:#2c482e;padding:10px 15px;box-shadow:0 3px 0 #0004}.add:hover{background:#45613c;transform:translateY(-2px)}
+.portion select{font-size:12px;max-width:150px}.portion>span{font-size:10px}
+.basket{border-radius:2px;max-width:635px}.basket strong{font-family:Barlow,sans-serif;font-size:19px}
+.order-line h2{font:700 27px Barlow,sans-serif}.empty-order b{font-family:Barlow,sans-serif}
+footer{font-family:DM,sans-serif}footer p{font-size:10px}
+@media(min-width:600px){.category-label{min-height:118px;padding-inline:17px}.category-label h2{font-size:36px}.category-label p{font-size:12px}.category-bottom{margin-inline:17px}.category-photo{aspect-ratio:1.5}.menu-main{padding:36px 27px 0}.menu-heading{padding-bottom:37px}.section-photo{height:280px}.product{padding:26px 23px}.product h3{font-size:32px}.product p{font-size:14px}.wicklow-mark{width:244px;height:78px}.topbar{height:105px}}
+@media(max-width:380px){.brand{gap:0}.wicklow-mark{width:188px;height:60px}.menu-main{padding-inline:12px}.category-grid{gap:14px 9px}.category-label h2{font-size:23px}.category-label{min-height:121px}.category-bottom>span{display:none}.product{grid-template-columns:1fr}.product-action{flex-direction:row;max-width:none;align-items:center;flex-wrap:wrap}.product-action .add{margin-left:auto}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.category-card:hover,.category-card:nth-child(even):hover,.category-card:hover .category-photo{transform:none}}
+
+/* =========================================================
+   WICKLOW · DIGITAL MENU REFINEMENT
+   Conserva paleta e imágenes. Eleva movimiento, jerarquía y
+   lectura de carta; elimina la sensación de e-commerce.
+   ========================================================= */
+
+/* Cabecera más sólida al navegar, sin cambiar colores de marca */
+.topbar{
+ position:sticky;
+ top:0;
+ z-index:30;
+ transition:box-shadow .32s ease,border-color .32s ease,background .32s ease;
+}
+.topbar.is-scrolled{
+ box-shadow:0 14px 34px #0008;
+ border-bottom-color:#8e946750;
+}
+.icon-button{
+ position:relative;
+ transition:transform .22s ease,color .22s ease,background .22s ease;
+}
+.icon-button:after{
+ content:'';
+ position:absolute;
+ inset:4px;
+ border:1px solid #95875b00;
+ transform:rotate(-4deg) scale(.9);
+ transition:border-color .22s ease,transform .22s ease;
+ pointer-events:none;
+}
+.icon-button:hover{transform:translateY(-2px)}
+.icon-button:hover:after{border-color:#95875b55;transform:rotate(-2deg) scale(1)}
+.search-icon svg{transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.search-icon:hover svg{transform:rotate(-8deg) scale(1.08)}
+
+/* La foto entra con un poco más de presencia, sin cambiar el asset */
+.section-photo{
+ overflow:hidden;
+ animation:wicklow-photo-in .72s cubic-bezier(.2,.72,.2,1) both;
+}
+@keyframes wicklow-photo-in{
+ from{opacity:.72;filter:saturate(.74) brightness(.78);background-size:208% 442%}
+ to{opacity:1;filter:none}
+}
+
+/* Titular: misma composición, mejor energía */
+.section-heading h1{position:relative}
+.section-heading h1:after{
+ content:'';
+ display:block;
+ width:72px;
+ height:5px;
+ margin-top:13px;
+ background:#6a8554;
+ clip-path:polygon(0 45%,100% 0,93% 75%,4% 100%);
+ transform:rotate(-2deg) scaleX(0);
+ transform-origin:left center;
+ animation:wicklow-stroke .58s .18s cubic-bezier(.2,.8,.2,1) forwards;
+}
+@keyframes wicklow-stroke{to{transform:rotate(-2deg) scaleX(1)}}
+
+/* Buscador y chips: interacción más precisa */
+.searchbox{
+ position:relative;
+ overflow:hidden;
+ transition:border-color .22s ease,box-shadow .22s ease,transform .22s ease;
+}
+.searchbox:before{
+ content:'';
+ position:absolute;
+ inset:auto 0 0;
+ height:2px;
+ background:#879760;
+ transform:scaleX(0);
+ transform-origin:left;
+ transition:transform .3s cubic-bezier(.2,.8,.2,1);
+}
+.searchbox:focus-within{
+ border-color:#8b9169aa;
+ box-shadow:0 9px 28px #0004;
+ transform:translateY(-1px);
+}
+.searchbox:focus-within:before{transform:scaleX(1)}
+.filter-chips{scroll-snap-type:x proximity;padding-bottom:6px}
+.filter-chips button{
+ scroll-snap-align:start;
+ position:relative;
+ overflow:hidden;
+ transition:background .2s ease,color .2s ease,transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.filter-chips button:hover{transform:translateY(-2px);border-color:#858c626e}
+.filter-chips button[aria-pressed=true]{box-shadow:0 6px 16px #0004}
+.filter-chips button[aria-pressed=true]:after{
+ content:'';
+ position:absolute;
+ left:12px;
+ right:12px;
+ bottom:4px;
+ height:2px;
+ background:#31442e;
+ transform:rotate(-1deg);
+ opacity:.68;
+}
+.result-count{letter-spacing:.04em}
+
+/* ---------------------------------------------------------
+   PRODUCTOS
+   De tarjeta de compra a carta editorial de pub.
+   --------------------------------------------------------- */
+.products{
+ padding:0 22px;
+ border-top:1px solid #716d4c33;
+}
+.product{
+ --px:0px;
+ --py:0px;
+ position:relative;
+ isolation:isolate;
+ margin:0;
+ padding:24px 4px 25px 13px;
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ gap:18px;
+ align-items:start;
+ background:transparent;
+ border:0;
+ border-bottom:1px solid #716d4c3d;
+ border-left:0;
+ overflow:hidden;
+ transition:transform .34s cubic-bezier(.2,.75,.2,1),background .3s ease,border-color .3s ease;
+}
+.product:before{
+ content:'';
+ position:absolute;
+ z-index:-1;
+ inset:5px -8px 5px -16px;
+ background:linear-gradient(100deg,#27312300 2%,#27312355 44%,#17221938 100%);
+ transform:translateX(-102%) skewX(-7deg);
+ transition:transform .5s cubic-bezier(.2,.78,.2,1);
+}
+.product:hover{
+ background:transparent;
+ border-left-color:transparent;
+ border-bottom-color:#8a865b61;
+ transform:translate3d(calc(4px + var(--px)),var(--py),0);
+}
+.product:hover:before{transform:translateX(0) skewX(-7deg)}
+.product-accent{
+ position:absolute;
+ left:0;
+ top:27px;
+ width:3px;
+ height:22px;
+ background:#627944;
+ transform:rotate(7deg) scaleY(.55);
+ transform-origin:center;
+ opacity:.6;
+ transition:height .3s ease,opacity .3s ease,transform .3s ease,background .3s ease;
+}
+.product:hover .product-accent{
+ height:37px;
+ opacity:1;
+ transform:rotate(5deg) scaleY(1);
+ background:#8b9f65;
+}
+.product-copy{min-width:0}
+.dish-type{
+ display:inline-flex;
+ align-items:center;
+ gap:7px;
+ margin:0 0 8px;
+ font-size:9px;
+ letter-spacing:.16em;
+ color:#a6b484;
+}
+.dish-type:before{
+ content:'';
+ width:13px;
+ height:1px;
+ background:#87976099;
+ transform:rotate(-5deg);
+}
+.product h3{
+ margin:0 0 9px;
+ font-size:clamp(25px,5.4vw,32px);
+ line-height:1.02;
+ letter-spacing:-.005em;
+ transition:transform .3s cubic-bezier(.2,.75,.2,1),color .22s ease;
+}
+.product:hover h3{transform:translateX(2px);color:#f7ead5}
+.product p{
+ max-width:47ch;
+ font-size:13px;
+ line-height:1.62;
+ color:#bab19d;
+}
+.product-action{
+ min-width:78px;
+ max-width:138px;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-end;
+ justify-content:flex-start;
+ gap:0;
+ padding-top:18px;
+ text-align:right;
+}
+.price{
+ position:relative;
+ display:inline-block;
+ padding:0 0 5px;
+ font:700 26px/1 Barlow,sans-serif;
+ color:#e7d1a6;
+ letter-spacing:-.025em;
+ white-space:nowrap;
+ transition:transform .3s cubic-bezier(.2,.75,.2,1),color .22s ease;
+}
+.price:after{
+ content:'';
+ position:absolute;
+ left:12%;
+ right:0;
+ bottom:0;
+ height:2px;
+ background:#83764f80;
+ transform:rotate(-2deg) scaleX(.45);
+ transform-origin:right;
+ transition:transform .3s ease;
+}
+.product:hover .price{transform:translateY(-2px);color:#f0dcb5}
+.product:hover .price:after{transform:rotate(-2deg) scaleX(1)}
+
+/* Variantes de precio se leen como menú, no como formulario */
+.price-stack{
+ display:grid;
+ gap:8px;
+ min-width:112px;
+}
+.price-option{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ align-items:baseline;
+ gap:8px;
+ padding-bottom:6px;
+ border-bottom:1px solid #776d4b38;
+}
+.price-option:last-child{border-bottom:0;padding-bottom:0}
+.price-option small{
+ font:400 10px/1.2 DM,sans-serif;
+ color:#a99f89;
+ letter-spacing:.025em;
+ text-align:left;
+}
+.price-option strong{
+ font:700 20px/1 Barlow,sans-serif;
+ color:#e7d1a6;
+ white-space:nowrap;
+ transition:transform .25s ease,color .25s ease;
+}
+.product:hover .price-option strong{transform:translateX(1px);color:#f0dcb5}
+
+/* Scroll reveal y re-filtrado con timing escalonado */
+.reveal{
+ opacity:0;
+ transform:translateY(18px);
+}
+.reveal.arrived{
+ opacity:1;
+ transform:none;
+ transition:opacity .56s var(--reveal-delay,0ms) cubic-bezier(.2,.72,.2,1),transform .56s var(--reveal-delay,0ms) cubic-bezier(.2,.72,.2,1),box-shadow .3s ease;
+}
+.product.reveal{transform:translateY(14px) translateX(-6px)}
+.product.reveal.arrived{transform:none}
+.product.reveal.arrived:hover{transform:translate3d(calc(4px + var(--px)),var(--py),0)}
+.filter-pop{animation:wicklow-filter-pop .32s var(--filter-delay,0ms) both cubic-bezier(.2,.72,.2,1)}
+@keyframes wicklow-filter-pop{
+ from{opacity:.45;transform:translateY(7px)}
+ to{opacity:1;transform:none}
+}
+
+/* Menos ruido en el final: la carta ya no tiene CTA de pedido */
+footer{padding-bottom:34px}
+
+@media(min-width:600px){
+ .products{padding-inline:27px}
+ .product{padding:28px 8px 29px 16px;gap:26px}
+ .product-action{min-width:98px;max-width:155px;padding-top:20px}
+ .price{font-size:29px}
+ .price-option strong{font-size:22px}
+ .product p{font-size:14px}
+}
+
+@media(max-width:430px){
+ .products{padding-inline:18px}
+ .product{padding-left:11px;gap:12px}
+ .product-action{min-width:72px;max-width:116px}
+ .price{font-size:23px}
+ .price-stack{min-width:100px;gap:7px}
+ .price-option{grid-template-columns:1fr;gap:2px;text-align:right}
+ .price-option small{text-align:right;font-size:9px}
+ .price-option strong{font-size:19px}
+}
+
+@media(max-width:350px){
+ .product{grid-template-columns:1fr}
+ .product-action{padding-top:2px;min-width:0;max-width:none;align-items:flex-start;text-align:left}
+ .price-stack{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .price-option{grid-template-columns:1fr auto;text-align:left}
+ .price-option small{text-align:left}
+}
+
+@media(prefers-reduced-motion:reduce){
+ .section-photo,.section-heading h1:after,.filter-pop{animation:none!important}
+ .section-heading h1:after{transform:rotate(-2deg) scaleX(1)}
+ .reveal,.product.reveal{opacity:1;transform:none}
+ .product:hover,.product.reveal.arrived:hover,.icon-button:hover{transform:none}
+ .product:before{display:none}
+}
