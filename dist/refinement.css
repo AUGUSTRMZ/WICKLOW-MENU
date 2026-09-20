@@ -377,56 +377,32 @@ footer{padding-bottom:34px}
  .product:before{display:none}
 }
 
-/* Ajuste del filtro de categorías en teléfono */
-@media (max-width: 480px) {
-  .group-select {
-    position: relative;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-  }
+/* Filtros de categorías - corrección móvil */
+@media (max-width: 599px) {
 
-  .group-select > span {
-    flex: none;
-    font-size: 12px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: #baa98f;
-  }
-
-  .group-select select {
-    appearance: none;
-    -webkit-appearance: none;
+  .filter-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
 
     width: 100%;
-    min-width: 0;
-    height: 48px;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-    margin: 0;
-    padding: 0 42px 0 14px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 
-    border: 1px solid #665a42;
-    border-radius: 4px;
-
-    background: #193124;
-    color: #efdfc3;
-
-    font-size: 14px;
-    line-height: 48px;
+    padding-right: 16px;
   }
 
-  .group-select::after {
-    content: "⌄";
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-54%);
-    pointer-events: none;
+  .filter-chips::-webkit-scrollbar {
+    display: none;
+  }
 
-    color: #cdbb96;
-    font-size: 20px;
-    line-height: 1;
+  .filter-chips button {
+    flex: 0 0 auto;
+    width: max-content;
+    min-width: max-content;
+    white-space: nowrap;
   }
 }
