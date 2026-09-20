@@ -376,3 +376,57 @@ footer{padding-bottom:34px}
  .product:hover,.product.reveal.arrived:hover,.icon-button:hover{transform:none}
  .product:before{display:none}
 }
+
+/* Ajuste del filtro de categorías en teléfono */
+@media (max-width: 480px) {
+  .group-select {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .group-select > span {
+    flex: none;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #baa98f;
+  }
+
+  .group-select select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+
+    margin: 0;
+    padding: 0 42px 0 14px;
+
+    border: 1px solid #665a42;
+    border-radius: 4px;
+
+    background: #193124;
+    color: #efdfc3;
+
+    font-size: 14px;
+    line-height: 48px;
+  }
+
+  .group-select::after {
+    content: "⌄";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-54%);
+    pointer-events: none;
+
+    color: #cdbb96;
+    font-size: 20px;
+    line-height: 1;
+  }
+}
