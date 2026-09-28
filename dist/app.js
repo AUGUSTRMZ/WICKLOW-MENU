@@ -1,10 +1,7 @@
 (() => {
  'use strict';
  const data=window.WICKLOW;
- if(!data?.items) return;
- const byId=new Map(data.items.map(p=>[p.id,p]));
- const search=document.querySelector('[data-search]');
- const group=document.querySelector('[data-group-filter]');
+ const byId=new Map((data?.items||[]).map(p=>[p.id,p]));
  const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 
  function animateVisibleProduct(el,index=0){
@@ -14,8 +11,9 @@
   el.style.setProperty('--filter-delay',Math.min(index,8)*28+'ms');
   el.classList.add('filter-pop');
  }
-
  function filter(){
+  const search=document.querySelector('[data-search]');
+  const group=document.querySelector('[data-group-filter]');
   const term=normalize(search?.value.trim());
   const selected=group?.value||'';
   let count=0;
@@ -23,7 +21,7 @@
    const p=byId.get(el.dataset.product);
    if(!p) return;
    const haystack=normalize([p.name,p.description,p.group,p.price].filter(Boolean).join(' '));
-   const show=(!selected||p.group===selected)&&haystack.includes(term);
+   const show=(!selected||p.group===selected)&&(!term||haystack.includes(term));
    el.hidden=!show;
    if(show){animateVisibleProduct(el,count);count++;}
   });
@@ -32,10 +30,12 @@
   const empty=document.querySelector('[data-empty]');
   if(empty)empty.hidden=!!count;
  }
+ const search=document.querySelector('[data-search]');
+ const group=document.querySelector('[data-group-filter]');
  search?.addEventListener('input',filter);
  group?.addEventListener('change',filter);
 
- if(group?.options && group.options.length>1 && group.options.length<=7){
+ if(group?.options && group.options.length>1 && group.options.length<=8){
   const chips=document.createElement('div');
   chips.className='filter-chips';
   chips.setAttribute('aria-label','Tipos de producto');
@@ -54,31 +54,40 @@
   group.closest('.group-select').hidden=true;
   group.closest('.controls').append(chips);
  }
+ if(search||group) filter();
 
- // Entrada progresiva: ligera, rápida y segura si no existe IntersectionObserver.
+ document.querySelectorAll('[data-view-tabs]').forEach(tabs=>{
+  const buttons=[...tabs.querySelectorAll('[data-view-target]')];
+  const blocks=[...document.querySelectorAll('[data-view-block]')];
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+   const value=button.dataset.viewTarget;
+   buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+   blocks.forEach(block=>block.hidden=block.dataset.viewBlock!==value);
+   window.requestAnimationFrame(()=>window.scrollTo({top:Math.max(0,tabs.offsetTop-110),behavior:'smooth'}));
+  }));
+ });
+
  if(window.IntersectionObserver && !window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches){
   const observer=new window.IntersectionObserver(entries=>entries.forEach(entry=>{
    if(!entry.isIntersecting) return;
    entry.target.classList.add('arrived');
    observer.unobserve(entry.target);
-  }),{threshold:.08,rootMargin:'0px 0px -5%'});
-  document.querySelectorAll('.category-card,.bonifacio,.product,.section-heading,.controls').forEach((el,i)=>{
+  }),{threshold:.06,rootMargin:'0px 0px -4%'});
+  document.querySelectorAll('.category-card,.bonifacio,.product,.section-heading,.controls,.menu-group,.promo-placeholder').forEach((el,i)=>{
    el.classList.add('reveal');
-   el.style.setProperty('--reveal-delay',Math.min(i%8,7)*38+'ms');
+   el.style.setProperty('--reveal-delay',Math.min(i%8,7)*35+'ms');
    observer.observe(el);
   });
  }
 
- // La cabecera gana profundidad al desplazarse sin cambiar la identidad visual.
  const topbar=document.querySelector('.topbar');
  if(topbar){
   let ticking=false;
   const paint=()=>{topbar.classList.toggle('is-scrolled',(window.scrollY||0)>18);ticking=false;};
-  window.addEventListener?.('scroll',()=>{if(!ticking){(window.requestAnimationFrame||setTimeout)(paint);ticking=true;}},{passive:true});
+  window.addEventListener?.('scroll',()=>{if(!ticking){requestAnimationFrame(paint);ticking=true;}},{passive:true});
   paint();
  }
 
- // Microparallax exclusivamente en dispositivos con mouse/trackpad.
  if(window.matchMedia?.('(hover:hover) and (pointer:fine)')?.matches && !window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches){
   document.querySelectorAll('.product').forEach(card=>{
    card.addEventListener('pointermove',e=>{

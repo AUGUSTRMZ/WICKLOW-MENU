@@ -377,32 +377,121 @@ footer{padding-bottom:34px}
  .product:before{display:none}
 }
 
-/* Filtros de categorías - corrección móvil */
-@media (max-width: 599px) {
+/* =========================================================
+   WICKLOW V2 · feedback de carta
+   ========================================================= */
+.header-spacer{display:block;width:36px;height:36px;flex:0 0 36px}
+.welcome-dog-real{width:100%;height:auto;display:block;object-fit:cover;object-position:center top;filter:saturate(.92) contrast(1.02)}
+.welcome-copy{margin-top:-18%;background:linear-gradient(transparent,#080b08 29%);padding-top:68px}
+.welcome-copy h1{font-size:clamp(55px,14vw,92px);line-height:.98}
+.bonifacio-top{margin:0 0 28px;padding:20px 13px;background:linear-gradient(100deg,#1a2e20,#101912);border:1px solid #8d855640;box-shadow:0 12px 30px #0004}
+.bonifacio-top span{font-size:10px;letter-spacing:.12em}.bonifacio-top small{display:block;margin-top:4px;font:400 11px/1.4 DM,sans-serif;letter-spacing:0;color:#a9a08c}
+.category-grid+.pub-quote{margin-top:27px}
 
-  .filter-chips {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 8px;
+.view-tabs{position:sticky;top:94px;z-index:20;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:13px 22px 16px;background:linear-gradient(#101710 75%,#10171000);backdrop-filter:blur(7px)}
+.view-tabs button{min-height:51px;border:1px solid #6b745048;background:#142219;color:#d0c3aa;font:700 18px Barlow,sans-serif;transition:.22s ease}
+.view-tabs button[aria-pressed=true]{background:#dac8a4;color:#17271c;border-color:#dac8a4;box-shadow:0 6px 17px #0004}
+.view-tabs button:active{transform:scale(.97)}
 
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+.menu-group{scroll-margin-top:130px;padding-top:3px}
+.group-heading{padding:31px 22px 12px;border-bottom:1px solid #756e4938}
+.group-heading span{display:block;margin-bottom:5px;color:#a6b484;font:700 9px DM,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.group-heading h2{margin:0;font:700 clamp(31px,8vw,45px)/1 Barlow,sans-serif;letter-spacing:-.025em;color:#f1e1c6}
+.menu-group+.menu-group{margin-top:12px}
 
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+.section-jump{position:sticky;top:94px;z-index:20;display:flex;gap:8px;overflow-x:auto;padding:12px 22px 15px;background:#101710e8;backdrop-filter:blur(9px);scrollbar-width:none;border-bottom:1px solid #6b74502b}
+.section-jump::-webkit-scrollbar{display:none}
+.section-jump a{flex:0 0 auto;white-space:nowrap;padding:10px 14px;border:1px solid #6b745048;background:#142219;color:#d0c3aa;font:700 15px Barlow,sans-serif;transition:.2s}
+.section-jump a:hover{background:#253826;transform:translateY(-1px)}
 
-    padding-right: 16px;
+.economy-heading,.recommendation-heading{padding-top:42px}
+.promo-placeholder{margin:12px 22px 35px;padding:28px 22px;border:1px dashed #8d85566e;background:linear-gradient(135deg,#2633234f,#101710);box-shadow:0 15px 35px #0004}
+.promo-placeholder>span{font:700 9px DM,sans-serif;letter-spacing:.18em;color:#a6b484}
+.promo-placeholder h2{font:700 34px/1.03 Barlow,sans-serif;margin:12px 0;color:#f0e1c7}
+.promo-placeholder p{margin:0;color:#b9ad98;font-size:13px;line-height:1.6}
+
+/* No dejar que Hamburguesas u otros filtros largos se compriman en teléfono. */
+@media(max-width:599px){
+ .filter-chips{display:flex;flex-wrap:nowrap;width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-right:16px}
+ .filter-chips::-webkit-scrollbar{display:none}
+ .filter-chips button{flex:0 0 auto;width:max-content;min-width:max-content;white-space:nowrap}
+ .group-heading{padding-top:27px}
+ .view-tabs{top:94px}
+}
+@media(min-width:600px){.view-tabs,.section-jump{top:105px}.welcome-copy{margin-top:-15%}}
+
+/* =========================================================
+   V3 · portada móvil compacta
+   Mantiene la fotografía protagonista sin empujar el CTA fuera
+   de la primera pantalla del teléfono.
+   ========================================================= */
+@media(max-width:599px){
+  .home .welcome{
+    min-height:calc(100svh - 92px);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
   }
 
-  .filter-chips::-webkit-scrollbar {
-    display: none;
+  .home .welcome-dog-real{
+    width:100%;
+    height:clamp(300px,39svh,350px);
+    flex:0 0 auto;
+    object-fit:cover;
+    object-position:center 16%;
+    filter:saturate(.94) contrast(1.03);
   }
 
-  .filter-chips button {
-    flex: 0 0 auto;
-    width: max-content;
-    min-width: max-content;
-    white-space: nowrap;
+  .home .welcome-copy{
+    margin-top:-56px;
+    padding:64px 22px 20px;
+    flex:1 0 auto;
+    background:linear-gradient(transparent 0,#080b08 24%,#080b08 100%);
+  }
+
+  .home .welcome-copy .overline{
+    margin-bottom:9px;
+    font-size:10px;
+    letter-spacing:.14em;
+  }
+
+  .home .welcome-copy h1{
+    margin:0 0 18px;
+    font-size:clamp(44px,11.8vw,58px);
+    line-height:.94;
+    letter-spacing:-.065em;
+  }
+
+  .home .welcome-copy h1:after{
+    margin-top:9px;
+    height:4px;
+  }
+
+  .home .enter{
+    min-height:60px;
+    padding:12px 18px;
+    font-size:24px;
+  }
+
+  .home .enter small{
+    margin-top:2px;
+    font-size:10px;
+  }
+}
+
+@media(max-width:370px){
+  .home .welcome-dog-real{
+    height:285px;
+    object-position:center 15%;
+  }
+
+  .home .welcome-copy{
+    margin-top:-50px;
+    padding-top:57px;
+  }
+
+  .home .welcome-copy h1{
+    font-size:43px;
+    margin-bottom:14px;
   }
 }
