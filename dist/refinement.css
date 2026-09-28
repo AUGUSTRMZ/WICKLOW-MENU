@@ -1350,7 +1350,7 @@ footer{
 
 /* =========================================================
    V3 · PORTADA MÓVIL FINAL
-   Pantalla completa, CTA visible y fundido suave.
+   Texto montado sobre la imagen con difuminado transparente.
    ========================================================= */
 
 @media(max-width:599px){
@@ -1372,84 +1372,90 @@ footer{
 
   .home .welcome-dog-real{
     position:absolute;
+    inset:0;
     z-index:0;
-    inset:0 0 auto 0;
-    display:block;
     width:100%;
-    height:64%;
+    height:100%;
+    display:block;
     object-fit:cover;
-    object-position:center 14%;
+    object-position:center 10%;
     filter:saturate(.94) contrast(1.03);
   }
 
-  /*
-    Este degradado es el que hace la transición difuminada.
-    La imagen no "termina": se va perdiendo poco a poco en el negro.
-  */
+  /* Capa muy ligera para que la foto conserve protagonismo */
   .home .welcome::after{
     content:'';
     position:absolute;
-    z-index:1;
     inset:0;
+    z-index:1;
     pointer-events:none;
     background:linear-gradient(
       to bottom,
       rgba(8,11,8,0) 0%,
-      rgba(8,11,8,0) 38%,
-      rgba(8,11,8,.06) 44%,
-      rgba(8,11,8,.18) 49%,
-      rgba(8,11,8,.42) 54%,
-      rgba(8,11,8,.68) 59%,
-      rgba(8,11,8,.88) 64%,
-      #080b08 70%,
-      #080b08 100%
+      rgba(8,11,8,0) 48%,
+      rgba(8,11,8,.08) 62%,
+      rgba(8,11,8,.18) 74%,
+      rgba(8,11,8,.28) 84%,
+      rgba(8,11,8,.38) 100%
     );
   }
 
-  /*
-    Todo el texto queda anclado abajo.
-    Así el botón ENTRA siempre queda dentro de la pantalla.
-  */
+  /* Aquí está el efecto que querías:
+     el texto arranca sobre la imagen con fondo difuminado/semitransparente */
   .home .welcome-copy{
     position:absolute;
-    z-index:2;
     left:0;
     right:0;
     bottom:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    height:49%;
+    z-index:2;
     margin:0;
-    padding:0 22px max(20px,env(safe-area-inset-bottom));
-    background:none;
+    padding:120px 22px max(20px,env(safe-area-inset-bottom));
+    background:linear-gradient(
+      to bottom,
+      rgba(8,11,8,0) 0%,
+      rgba(8,11,8,.12) 18%,
+      rgba(8,11,8,.34) 38%,
+      rgba(8,11,8,.58) 58%,
+      rgba(8,11,8,.82) 80%,
+      rgba(8,11,8,.96) 100%
+    );
+    backdrop-filter:blur(2px);
   }
 
   .home .welcome-copy .overline{
-    margin:0 0 9px;
+    margin:0 0 8px;
     font-size:10px;
-    letter-spacing:.15em;
+    letter-spacing:.16em;
+    color:#e2d5bb;
+    opacity:.95;
   }
 
   .home .welcome-copy h1{
-    margin:0 0 17px;
+    margin:0 0 16px;
     font-size:clamp(48px,13vw,64px);
     line-height:.92;
     letter-spacing:-.068em;
+    color:#f3e5cb;
+    text-shadow:0 4px 18px rgba(0,0,0,.35);
   }
 
   .home .welcome-copy h1:after{
     width:68%;
     height:5px;
     margin-top:10px;
+    background:#9eaf79;
+    opacity:.95;
   }
 
   .home .enter{
     width:100%;
     min-height:66px;
-    flex:0 0 auto;
     padding:13px 19px;
     font-size:25px;
+    background:rgba(44,91,57,.78);
+    backdrop-filter:blur(4px);
+    border:1px solid rgba(195,202,153,.18);
+    box-shadow:0 10px 24px rgba(0,0,0,.22);
   }
 
   .home .enter small{
@@ -1460,14 +1466,12 @@ footer{
 
 @media(max-width:370px){
 
-  .home .welcome-copy{
-    padding-inline:17px;
-    padding-bottom:max(16px,env(safe-area-inset-bottom));
+  .home .welcome-dog-real{
+    object-position:center 11%;
   }
 
-  .home .welcome-dog-real{
-    height:63%;
-    object-position:center 13%;
+  .home .welcome-copy{
+    padding:106px 17px max(16px,env(safe-area-inset-bottom));
   }
 
   .home .welcome-copy h1{
@@ -1484,11 +1488,11 @@ footer{
 @media(max-width:599px) and (max-height:680px){
 
   .home .welcome-dog-real{
-    height:61%;
+    object-position:center 8%;
   }
 
   .home .welcome-copy{
-    height:51%;
+    padding-top:96px;
     padding-bottom:12px;
   }
 
@@ -1497,7 +1501,7 @@ footer{
   }
 
   .home .welcome-copy h1{
-    font-size:clamp(41px,11.5vw,52px);
+    font-size:clamp(41px,11.4vw,52px);
     margin-bottom:11px;
   }
 
