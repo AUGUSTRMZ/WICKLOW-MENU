@@ -1,0 +1,9 @@
+{
+  "name": "wicklow-backstage-bonifacio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Menu de Wicklow Backstage con ocho categorias y Bonifacio",
+  "scripts": {
+    "build": "node build.cjs"
+  }
+}

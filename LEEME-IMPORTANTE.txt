@@ -1,0 +1,56 @@
+WICKLOW BACKSTAGE — PAQUETE CORREGIDO PARA VS CODE + RENDER
+============================================================
+
+POR FAVOR: DESCOMPRIME EL CONTENIDO ENTERO, SIN APLANAR LAS CARPETAS.
+
+ESTRUCTURA QUE DEBE EXISTIR EN WICKLOW-MENU:
+  index.html                 <-- clic derecho > Open with Live Server
+  backstage.html
+  concepts.css
+  concepts.js
+  catalog.js
+  assets/                    <-- ESTA CARPETA ES OBLIGATORIA
+    bonifacio-comida.webp
+    bonifacio-recomienda.webp
+    ... todas las imágenes y las fuentes
+  build.cjs
+  package.json
+  dist/                      <-- copia ya preparada para Render
+    index.html
+    concepts.css
+    concepts.js
+    catalog.js
+    assets/ ...
+  PREVIEW-INDEPENDIENTE.html <-- prueba el diseño sin depender de carpetas
+
+PASOS PARA TU REPO YA CLONADO EN TU ESCRITORIO:
+1. Guarda una copia de la carpeta WICKLOW-MENU o haz commit de tu trabajo actual.
+2. NO borres la carpeta .git; necesitas conservar la conexión con GitHub.
+3. Abre este ZIP y COPIA TODO SU CONTENIDO dentro de WICKLOW-MENU.
+   Si Windows pregunta por reemplazar archivos, acepta.
+   NO extraigas el contenido de assets/ dentro de la raíz.
+4. En VS Code, abre WICKLOW-MENU/index.html > Open with Live Server.
+5. Si sigue blanco, abre WICKLOW-MENU/PREVIEW-INDEPENDIENTE.html.
+   Esa vista está empaquetada en un archivo y no necesita assets externos.
+6. Para actualizar Render: abre la terminal dentro de WICKLOW-MENU:
+     git status
+     git add -A
+     git commit -m "Actualizar menu Wicklow Backstage"
+     git push
+
+CONFIGURACIÓN PARA STATIC SITE EN RENDER:
+  Build Command: npm run build
+  Publish Directory: dist
+  Root Directory: (vacío)
+  Auto-Deploy: Yes (opcional)
+
+Este paquete incluye dist generado. Si Render tiene Build Command vacío,
+igual puede publicar la carpeta dist. Si usa npm run build, copia y actualiza
+el contenido de dist desde los archivos raíz, evitando versiones viejas.
+Si Render es Web Service en vez de Static Site, su configuración será distinta.
+
+DUDAS FRECUENTES:
+- HTML blanco/azul: el CSS no cargó; verifica /concepts.css.
+- Fotos no aparecen: falta la carpeta /assets.
+- Render viejo: asegura Publish Directory = dist y usa Manual Deploy Latest Commit.
+- ¿Puedo borrar archivos viejos? Sí tras copia de seguridad, pero NUNCA .git.
