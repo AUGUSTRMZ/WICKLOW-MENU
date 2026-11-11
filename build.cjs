@@ -5,6 +5,9 @@ const path = require('node:path');
 
 const root = __dirname;
 const dist = path.join(root, 'dist');
+// Un único catálogo editable, también disponible sin fetch al abrir desde disco.
+const catalog = JSON.parse(fs.readFileSync(path.join(root, 'catalog.json'), 'utf8'));
+fs.writeFileSync(path.join(root, 'catalog.js'), 'window.WICKLOW_CATALOG = '+JSON.stringify(catalog)+';\n');
 const files = ['index.html', 'backstage.html', 'concepts.css', 'concepts.js', 'catalog.js'];
 const images = [
   'bonifacio-aperitivos.webp', 'bonifacio-brindis.webp', 'bonifacio-cervezas.webp',
